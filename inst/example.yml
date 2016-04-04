@@ -1,0 +1,38 @@
+refId: main_package
+name: "Main package"
+description: "This is the main package"
+executables:
+- refId: pkg1
+  name: "Package 1"
+  description: "This is a package #1"
+- refId: pkg2
+  name: "Package 2"
+  description: "This is a package #2"
+- refId: pkg3
+  name: "Package 3"
+  description: "This is a package #3"
+  executables:
+  - refId: subPkg1
+    name: "Sub-package 1"
+    description: "This is a nested package 1"
+  - refId: subPkg2
+    name: "Sub-package 2"
+    description: "This is a nested package 2"
+    executables:
+    - refId: subnest1
+      name: "Deep nested pkg 1"
+      description: "This is a package inside sub-package 2"
+    - refId: subnest2
+      name: "Deep nested pkg 2"
+      description: "This is a package inside sub-package 2"
+    references:
+    - from: subnest1
+      to: subnest2
+  references:
+  - from: subPkg1
+    to: subnest2
+references:
+- from: pkg1
+  to: pkg2
+- from: pkg2
+  to: subPkg2
